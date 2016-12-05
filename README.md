@@ -14,3 +14,28 @@ los campos `MenuTemplate` y `StatusbarText`
 - [x] getChilds
 - [ ] setMenuTemplate
 - [ ] getMenuTemplate
+
+## Ejemplo
+
+```lua
+-- Importar clases necesarias
+local MainWindow = require 'forms.mainwindowclass'
+
+app.MainWindow = MainWindow:new { 
+
+  Name = 'windMain', Title = 'LNomina v0.0.1',
+  Width = 800, Height = 600,
+  Flags = WIN_DEFAULT_STYLE,
+
+  MenuTemplate = 'forms/mainwindow_menutemplate.lua',
+}
+
+app.MainWindow:centre()
+
+app.MainWindow.onClose : setHandler ( function ( ... )
+    io.stdout:write '[lide.app] exit\n' io.stdout:flush () io.stdout:close ()
+    os.exit()
+end)
+
+return app.MainWindow
+```
